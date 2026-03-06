@@ -9,6 +9,7 @@
         :root { --primary: #2563eb; --accent: #06b6d4; --dark: #0f172a; --light: #f8fafc; }
         body { font-family: 'Inter', system-ui, sans-serif; line-height: 1.6; margin: 0; color: #334155; background: var(--light); overflow-x: hidden; }
         
+        /* Header & Hero */
         header { 
             background: linear-gradient(135deg, var(--dark) 0%, #1e293b 100%); 
             color: white; padding: 6rem 2rem; text-align: center;
@@ -22,6 +23,7 @@
         .container { max-width: 1000px; margin: auto; padding: 2rem; }
         h2 { color: var(--dark); border-left: 5px solid var(--primary); padding-left: 15px; margin: 3rem 0 1.5rem 0; }
         
+        /* Experience Cards */
         .card { 
             background: white; padding: 2rem; border-radius: 12px; 
             box-shadow: 0 4px 6px rgba(0,0,0,0.05); margin-bottom: 2rem;
@@ -29,23 +31,37 @@
         }
         .card:hover { transform: translateY(-5px); box-shadow: 0 20px 25px rgba(0,0,0,0.1); border-color: var(--primary); }
         
+        /* Interactive Skill Badges */
         .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 1rem; }
         .skill-badge { 
-            background: white; padding: 0.8rem; border-radius: 8px; 
-            text-align: center; border: 1px solid #e2e8f0; font-weight: 500;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.02); font-size: 0.9rem;
+            background: white; padding: 1rem; border-radius: 10px; 
+            text-align: center; border: 1px solid #e2e8f0; font-weight: 600;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.02); transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            cursor: default; color: var(--dark);
+        }
+        .skill-badge:hover { 
+            transform: scale(1.15); 
+            background: var(--primary); 
+            color: white; 
+            box-shadow: 0 10px 20px rgba(37, 99, 235, 0.3);
+            border-color: var(--primary);
         }
         
         .badge { background: #dbeafe; color: #1e40af; padding: 0.3rem 0.8rem; border-radius: 20px; font-size: 0.85rem; font-weight: 600; }
         
+        /* Contact Buttons */
         .btn-container { display: flex; justify-content: center; gap: 15px; flex-wrap: wrap; margin-top: 2rem; }
         .btn {
-            display: inline-block; padding: 0.8rem 2rem; border-radius: 30px; 
-            text-decoration: none; font-weight: 600; transition: 0.3s;
+            display: inline-flex; align-items: center; gap: 8px; padding: 0.8rem 1.8rem; border-radius: 30px; 
+            text-decoration: none; font-weight: 600; transition: 0.3s; font-size: 0.95rem;
         }
-        .btn-primary { background: var(--primary); color: white; box-shadow: 0 4px 14px rgba(37, 99, 235, 0.4); }
+        .btn-primary { background: var(--primary); color: white; }
         .btn-outline { border: 2px solid white; color: white; }
-        .btn:hover { transform: scale(1.05); opacity: 0.9; }
+        .btn-call { background: #10b981; color: white; }
+        .btn:hover { transform: translateY(-3px); opacity: 0.9; box-shadow: 0 5px 15px rgba(0,0,0,0.2); }
+
+        /* Floating Contact Form Link */
+        .form-card { background: #f1f5f9; border: 2px dashed #cbd5e1; text-align: center; padding: 2rem; border-radius: 12px; margin-top: 3rem; }
     </style>
 </head>
 <body>
@@ -54,85 +70,82 @@
     <img src="profile.jpg" alt="Syed Md Noor Afjal" class="profile-img" data-aos="zoom-in">
     <h1 data-aos="fade-down">SYED MD NOOR AFJAL</h1>
     <p data-aos="fade-up" data-aos-delay="200" style="font-size: 1.2rem; opacity: 0.9;">
-        Mechanical Engineer | B.Tech Student at KIIT DU | <strong>CGPA: 9.25</strong>
+        Mechanical Engineer | KIIT DU | <strong>CGPA: 9.25</strong>
     </p>
     <div class="btn-container" data-aos="fade-up" data-aos-delay="400">
-        <a href="mailto:nafjal99@gmail.com" class="btn btn-primary">Contact Me</a>
-        <a href="Noor_Resume.pdf" target="_blank" class="btn btn-outline">Download Resume</a>
+        <a href="mailto:nafjal99@gmail.com" class="btn btn-primary">✉️ Email Me</a>
+        <a href="tel:+919051602269" class="btn btn-call">📞 Call Now</a>
+        <a href="Noor_Resume.pdf" target="_blank" class="btn btn-outline">📄 Resume</a>
     </div>
 </header>
 
 <div class="container">
     <section data-aos="fade-up">
         <h2>About Me</h2>
-        <p>I am a results-driven Mechanical Engineering student recognized for delivering high-impact process optimizations and technical reports. With a strong CGPA of 9.25, I combine technical expertise in SolidWorks and ANSYS with a proven ability to lead cross-functional teams in dynamic environments.</p>
+        <p>I am a results-driven Mechanical Engineering student recognized for delivering high-impact process optimizations and technical reports[cite: 7]. With a strong CGPA of 9.25, I combine technical expertise in SolidWorks and ANSYS with a proven ability to lead cross-functional teams[cite: 8, 11, 25].</p>
     </section>
 
     <section>
-        <h2>Work Experience</h2>
+        <h2>Experience Highlights</h2>
         <div class="card" data-aos="fade-left">
             <div style="display: flex; justify-content: space-between; flex-wrap: wrap; align-items: center;">
                 <h3 style="margin: 0;">Intern | Amazon</h3>
-                <span class="badge">JUNE 2025 - NOV 2025</span>
+                <span class="badge">2025</span>
             </div>
             <ul>
-                <li>Optimized Landlord Onboarding and Executive Customer Relations (ECR) escalation handling.</li>
-                <li>Reduced vendor onboarding time by <strong>33%</strong> and tax interview time by <strong>80%</strong>.</li>
-                <li>Achieved <strong>40% improvement</strong> in RCA and <strong>60% improvement</strong> in Rescue & RCA resolution.</li>
-                <li>Developed Standard Operating Procedures (SOPs) and trained <strong>30+ associates</strong>.</li>
+                <li>Improved vendor onboarding by 33% and tax interview time by 80%[cite: 16].</li>
+                <li>Achieved 60% improvement in Rescue & RCA resolution[cite: 17].</li>
+                <li>Trained 30+ associates on new SOP and SLA protocols[cite: 18].</li>
             </ul>
         </div>
-
         <div class="card" data-aos="fade-right">
             <div style="display: flex; justify-content: space-between; flex-wrap: wrap; align-items: center;">
                 <h3 style="margin: 0;">Intern | Larsen & Toubro</h3>
-                <span class="badge">MAY 2024 - JUNE 2024</span>
+                <span class="badge">2024</span>
             </div>
             <ul>
-                <li>Gained hands-on exposure to safety procedures, manufacturing processes, fabrication, and assembly.</li>
-                <li>Maintained accurate activity records and prepared detailed technical reports.</li>
+                <li>Hands-on exposure to manufacturing, fabrication, and assembly[cite: 22].</li>
+                <li>Maintained activity records and prepared technical reports[cite: 22].</li>
             </ul>
         </div>
     </section>
 
     <section>
-        <h2>Technical & Professional Skills</h2>
-        <div class="skills-grid" data-aos="fade-up">
-            <div class="skill-badge">AutoCAD</div>
-            <div class="skill-badge">SolidWorks</div>
-            <div class="skill-badge">ANSYS</div>
-            <div class="skill-badge">GD&T</div>
-            <div class="skill-badge">Graphic Designing</div>
-            <div class="skill-badge">Technical Writing</div>
-            <div class="skill-badge">Public Speaking</div>
-            <div class="skill-badge">Social Media Tools</div>
+        <h2>Technical & Creative Skills</h2>
+        <p style="margin-bottom: 1.5rem; font-size: 0.9rem; color: #64748b;">(Hover over a skill to see it pop!)</p>
+        <div class="skills-grid">
+            <div class="skill-badge" data-aos="zoom-in">AutoCAD</div>
+            <div class="skill-badge" data-aos="zoom-in">SolidWorks</div>
+            <div class="skill-badge" data-aos="zoom-in">ANSYS</div>
+            <div class="skill-badge" data-aos="zoom-in">GD&T</div>
+            <div class="skill-badge" data-aos="zoom-in">Graphic Design</div>
+            <div class="skill-badge" data-aos="zoom-in">Tech Writing</div>
+            <div class="skill-badge" data-aos="zoom-in">Public Speaking</div>
+            <div class="skill-badge" data-aos="zoom-in">Social Media</div>
         </div>
     </section>
 
     <section>
-        <h2>Key Projects</h2>
+        <h2>Projects</h2>
         <div class="card" data-aos="fade-up">
-            <h3>⚙️ Design & Fabrication of 3-Speed Gearbox</h3>
-            <p>Directed project execution and performed model design, manufacturing support, and ANSYS performance analysis using SolidWorks.</p>
+            <h3>⚙️ 3-Speed Gearbox</h3>
+            <p>Performed model design and ANSYS performance analysis using SolidWorks[cite: 27].</p>
         </div>
         <div class="card" data-aos="fade-up">
-            <h3>🔩 Design & Fabrication of Screw Jack</h3>
-            <p>Led the team as project coordinator; contributed to design, fabrication, and structural analysis using SolidWorks and ANSYS.</p>
+            <h3>🔩 Screw Jack Fabrication</h3>
+            <p>Led team as project coordinator for design and fabrication[cite: 24, 25].</p>
         </div>
     </section>
 
-    <section>
-        <h2>Recognition & Certifications</h2>
-        <div class="card" data-aos="zoom-in">
-            <p><strong>🏆 Best Student Paper Award</strong> - 40th International Value Engineering Conference: <em>"Towards Sustainability in the era of digitalization"</em>.</p>
-            <p><strong>📜 L&T Edutech:</strong> Digital Technologies (IIoT/Cloud), Collaborative Robotics (AI/ML), and Heavy Manufacturing Technology.</p>
-            <p><strong>🌱 Leadership:</strong> NSS SME Department Head (Kruti) & Documentation Co-coordinator.</p>
-        </div>
+    <section class="form-card" data-aos="zoom-in">
+        <h3>Have a Specific Inquiry?</h3>
+        <p>Click below to send me a direct message via email.</p>
+        <a href="mailto:nafjal99@gmail.com?subject=Inquiry from Portfolio" class="btn btn-primary">Send Direct Message</a>
     </section>
 </div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
-<script>AOS.init({ duration: 1000, once: true });</script>
+<script>AOS.init({ duration: 800, once: true });</script>
 
 </body>
 </html>
