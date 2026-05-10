@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Syed Md Noor Afjal | Executive Portfolio</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
-    <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@400;600;700&family=Space+Mono&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@600;700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
     
     <style>
         :root { 
@@ -26,8 +26,11 @@
         @media (min-width: 1024px) { #cursor { display: block; } body { cursor: none; } }
 
         body { 
-            font-family: 'Lexend', sans-serif; margin: 0; background: #f8fafc; 
+            font-family: 'Inter', sans-serif; /* Smoother default font */
+            margin: 0; background: #f8fafc; 
             scroll-behavior: smooth; overflow-x: hidden;
+            color: #334155; /* Softer dark grey for text */
+            line-height: 1.6; /* Better spacing for readability */
         }
 
         .mesh-bg {
@@ -40,6 +43,11 @@
             opacity: 0.8; z-index: -1;
         }
 
+        /* HEADINGS KEEP LEXEND */
+        header h1, h2, h3 { 
+            font-family: 'Lexend', sans-serif; 
+        }
+
         header { 
             background: var(--dark); color: white; padding: 7rem 2rem; 
             text-align: center; clip-path: polygon(0 0, 100% 0, 100% 88%, 0 100%);
@@ -48,6 +56,7 @@
 
         .profile-img { width: 150px; height: 150px; border-radius: 50%; border: 3px solid var(--primary); margin-bottom: 1rem; object-fit: cover; }
         .container { max-width: 900px; margin: auto; padding: 2rem; }
+        
         h2 { font-weight: 700; color: var(--dark); border-left: 6px solid var(--primary); padding-left: 18px; margin: 4.5rem 0 2.5rem 0; text-transform: uppercase; letter-spacing: 1px; }
 
         .card { 
@@ -67,7 +76,7 @@
             background: rgba(255, 255, 255, 0.55);
         }
 
-        .btn { padding: 0.9rem 2rem; border-radius: 14px; font-weight: 600; text-decoration: none; display: inline-flex; align-items: center; gap: 10px; transition: 0.3s; border: none; cursor: pointer; }
+        .btn { font-family: 'Inter', sans-serif; padding: 0.9rem 2rem; border-radius: 14px; font-weight: 600; text-decoration: none; display: inline-flex; align-items: center; gap: 10px; transition: 0.3s; border: none; cursor: pointer; }
         .btn-primary { background: var(--primary); color: white; }
         .btn-success { background: var(--success); color: white; }
         .btn-outline { border: 2px solid rgba(255,255,255,0.4); color: white; background: transparent; }
@@ -77,9 +86,13 @@
         .report-btn { position: absolute; bottom: 2rem; left: 50%; transform: translate(-50%, 25px); opacity: 0; transition: all 0.4s ease; }
         .project-card:hover .report-btn { opacity: 1; transform: translate(-50%, 0); }
 
-        .badge { font-family: 'Space Mono', monospace; font-size: 0.75rem; background: #dbeafe; color: #1e40af; padding: 5px 12px; border-radius: 8px; font-weight: bold; }
+        /* UPDATED BADGE FONT */
+        .badge { 
+            font-family: 'Inter', sans-serif; font-size: 0.75rem; background: #dbeafe; color: #1e40af; padding: 5px 12px; border-radius: 8px; font-weight: 600; 
+        }
+
         .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 1.2rem; }
-        .skill-item { text-align: center; padding: 1.8rem !important; margin: 0; }
+        .skill-item { text-align: center; padding: 1.8rem !important; margin: 0; font-weight: 500; }
     </style>
 </head>
 <body>
@@ -90,7 +103,7 @@
 <header>
     <img src="profile.jpg" alt="Syed Md Noor Afjal" class="profile-img" data-aos="zoom-in">
     <h1 data-aos="fade-down" style="font-size: 2.8rem; letter-spacing: 2px;">SYED MD NOOR AFJAL</h1>
-    <p data-aos="fade-up" style="font-size: 1.2rem;">Mechanical Engineer | <strong>9.25 CGPA</strong></p>
+    <p data-aos="fade-up" style="font-size: 1.2rem; font-family: 'Inter', sans-serif;">Mechanical Engineer | <strong>9.25 CGPA</strong></p>
     <div style="margin-top:25px; display: flex; justify-content: center; gap: 15px; flex-wrap: wrap;">
         <button onclick="smartEmail()" class="btn btn-primary magnetic">✉️ Email Me</button>
         <a href="tel:+919051602269" class="btn btn-success magnetic">📞 Call Now</a>
