@@ -22,44 +22,62 @@
         .container { max-width: 1000px; margin: auto; padding: 2rem; }
         h2 { color: var(--dark); border-left: 5px solid var(--primary); padding-left: 15px; margin: 3rem 0 1.5rem 0; }
         
+        /* General Card Styling */
         .card { 
             background: white; padding: 2rem; border-radius: 12px; 
             box-shadow: 0 4px 6px rgba(0,0,0,0.05); margin-bottom: 2rem;
-            transition: all 0.3s ease; border: 1px solid #e2e8f0;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            border: 1px solid #e2e8f0;
+            position: relative;
         }
-        .card:hover { transform: translateY(-5px); box-shadow: 0 20px 25px rgba(0,0,0,0.1); border-color: var(--primary); }
+
+        /* PROJECT CARD SPECIAL HOVER EFFECT */
+        .project-card { cursor: pointer; overflow: hidden; }
+        .project-card p { transition: transform 0.4s ease; }
         
-        /* Interactive Skill Badges with Pop-up Effect */
+        .project-card:hover, .project-card:active { 
+            transform: scale(1.03); 
+            border-color: var(--success);
+            /* Static green glow with fade effect */
+            box-shadow: 0 0 20px 5px rgba(16, 185, 129, 0.3); 
+        }
+
+        .project-card:hover p, .project-card:active p {
+            transform: translateY(-10px);
+        }
+
+        /* Report Button Logic */
+        .report-btn {
+            display: inline-block; padding: 10px 20px;
+            background: var(--success); color: white; text-decoration: none;
+            border-radius: 8px; font-size: 0.9rem; font-weight: 600;
+            transition: all 0.4s ease;
+            opacity: 0; transform: translateY(20px);
+            position: absolute; bottom: 1.5rem; left: 2rem;
+        }
+
+        .project-card:hover .report-btn, .project-card:active .report-btn {
+            opacity: 1; transform: translateY(0);
+        }
+
+        /* Timeline & Skills (Kept the same) */
+        .timeline-item { border-left: 2px solid #e2e8f0; padding-left: 20px; position: relative; margin-bottom: 20px; }
+        .timeline-item::before { content: ''; width: 12px; height: 12px; background: var(--primary); border-radius: 50%; position: absolute; left: -7px; top: 5px; }
+        
         .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 1rem; }
         .skill-badge { 
             background: white; padding: 1rem; border-radius: 10px; 
             text-align: center; border: 1px solid #e2e8f0; font-weight: 600;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.02); transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            cursor: pointer; color: var(--dark);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
-        .skill-badge:hover { 
-            transform: scale(1.2); 
-            background: var(--primary); 
-            color: white; 
-            box-shadow: 0 15px 30px rgba(37, 99, 235, 0.4);
-            border-color: var(--primary);
-            z-index: 10;
-        }
-        
-        .badge { background: #dbeafe; color: #1e40af; padding: 0.3rem 0.8rem; border-radius: 20px; font-size: 0.85rem; font-weight: 600; }
-        
+        .skill-badge:hover { transform: scale(1.1); background: var(--primary); color: white; }
+
         .btn-container { display: flex; justify-content: center; gap: 15px; flex-wrap: wrap; margin-top: 2rem; }
-        .btn {
-            display: inline-flex; align-items: center; gap: 8px; padding: 0.8rem 1.8rem; border-radius: 30px; 
-            text-decoration: none; font-weight: 600; transition: 0.3s; font-size: 0.95rem; cursor: pointer; border: none;
-        }
+        .btn { display: inline-flex; align-items: center; gap: 8px; padding: 0.8rem 1.8rem; border-radius: 30px; text-decoration: none; font-weight: 600; transition: 0.3s; cursor: pointer; border: none; }
         .btn-primary { background: var(--primary); color: white; }
         .btn-outline { border: 2px solid white; color: white; }
         .btn-call { background: var(--success); color: white; }
-        .btn:hover { transform: translateY(-3px); opacity: 0.9; box-shadow: 0 5px 15px rgba(0,0,0,0.2); }
-
-        .timeline-item { border-left: 2px solid #e2e8f0; padding-left: 20px; position: relative; margin-bottom: 20px; }
-        .timeline-item::before { content: ''; width: 12px; height: 12px; background: var(--primary); border-radius: 50%; position: absolute; left: -7px; top: 5px; }
+        .badge { background: #dbeafe; color: #1e40af; padding: 0.3rem 0.8rem; border-radius: 20px; font-size: 0.85rem; font-weight: 600; }
     </style>
 </head>
 <body>
@@ -67,9 +85,7 @@
 <header>
     <img src="profile.jpg" alt="Syed Md Noor Afjal" class="profile-img" data-aos="zoom-in">
     <h1 data-aos="fade-down">SYED MD NOOR AFJAL</h1>
-    <p data-aos="fade-up" data-aos-delay="200" style="font-size: 1.2rem; opacity: 0.9;">
-        Mechanical Engineer | KIIT DU | <strong>CGPA: 9.25</strong>
-    </p>
+    <p data-aos="fade-up" data-aos-delay="200">Mechanical Engineer | KIIT DU | <strong>CGPA: 9.25</strong></p>
     <div class="btn-container" data-aos="fade-up" data-aos-delay="400">
         <button onclick="smartEmail()" class="btn btn-primary">✉️ Email Me</button>
         <a href="tel:+919051602269" class="btn btn-call">📞 Call Now</a>
@@ -80,29 +96,28 @@
 <div class="container">
     <section data-aos="fade-up">
         <h2>About Me</h2>
-        <p>I am a results-driven Mechanical Engineering student recognized for delivering high-impact process optimizations and technical reports. With a strong CGPA of 9.25, I combine technological expertise in technical softwares and platforms with proven ability to lead cross-functional teams.</p>
+        <p>I am a results-driven Mechanical Engineering student recognized for delivering high-impact process optimizations and technical reports. With a strong CGPA of 9.25, I combine technical expertise in SolidWorks and ANSYS with a proven ability to lead cross-functional teams.</p>
     </section>
 
     <section>
         <h2>Experience</h2>
         <div class="card" data-aos="fade-left">
-            <div style="display: flex; justify-content: space-between; flex-wrap: wrap; align-items: center;">
-                <h3 style="margin: 0;">Program Manager Intern | Amazon</h3>
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+                <h3 style="margin: 0;">Intern | Amazon</h3>
                 <span class="badge">2025</span>
             </div>
             <ul>
                 <li>Improved vendor onboarding by 33% and tax interview time by 80%.</li>
                 <li>Achieved 60% improvement in Rescue & RCA resolution.</li>
-                <li>Trained 30+ associates on new SOP and SLA protocols.</li>
             </ul>
         </div>
         <div class="card" data-aos="fade-right">
-            <div style="display: flex; justify-content: space-between; flex-wrap: wrap; align-items: center;">
-                <h3 style="margin: 0;">Engineering Intern | Larsen & Toubro</h3>
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+                <h3 style="margin: 0;">Intern | Larsen & Toubro</h3>
                 <span class="badge">2024</span>
             </div>
             <ul>
-                <li>Hands-on exposure to manufacturing, fabrication, and assembly.</li>
+                <li>Gained hands-on exposure to manufacturing and fabrication operations.</li>
                 <li>Maintained activity records and prepared technical reports.</li>
             </ul>
         </div>
@@ -112,20 +127,42 @@
         <h2>Leadership & Community</h2>
         <div class="card" data-aos="fade-up">
             <div class="timeline-item">
-                <strong>Department Head - NSS SME (Kruti)</strong>
-                <span class="badge">2025 - Present</span>
-                <p>Leading departmental initiatives and overseeing core operations within the NSS wing.</p>
+                <strong>Department Head - NSS SME (Kruti)</strong> <span class="badge">2025 - Present</span>
             </div>
             <div class="timeline-item">
-                <strong>Writing & Documentation Head</strong>
-                <span class="badge">2024 - 2025</span>
-                <p>Coordinated technical documentation and report writing for organizational activities.</p>
+                <strong>Writing & Documentation Head</strong> <span class="badge">2024 - 2025</span>
             </div>
             <div class="timeline-item">
-                <strong>NSS Volunteer</strong>
-                <span class="badge">2023 - 2024</span>
-                <p>Actively participated in community service and social impact programs.</p>
+                <strong>NSS Volunteer</strong> <span class="badge">2023 - 2024</span>
             </div>
+        </div>
+    </section>
+
+    <section>
+        <h2>Engineering Projects</h2>
+        
+        <div class="card project-card" data-aos="fade-up">
+            <h3>⚙️ 3-Speed Gearbox</h3>
+            <p>Designed the shifting mechanism and gears for smooth transitions using <strong>SolidWorks</strong> and <strong>ANSYS</strong> performance analysis.</p>
+            <a href="Gearbox_Report.docx" class="report-btn">View Report</a>
+        </div>
+
+        <div class="card project-card" data-aos="fade-up">
+            <h3>🔩 Scissor Screw Jack Fabrication</h3>
+            <p>Managed end-to-end fabrication including square thread geometry and welding. Led the project as <strong>Project Coordinator</strong>.</p>
+            <a href="Screw_Jack_PPT.pdf" class="report-btn">View Presentation</a>
+        </div>
+
+        <div class="card project-card" data-aos="fade-up">
+            <h3>🌀 Mini Drilling and Cutting Machine</h3>
+            <p>Developed a dual-purpose tool for small-scale fabrication. Integrated mechanical components for efficient workshop use.</p>
+            <a href="Drilling_Machine_Report.pdf" class="report-btn">View Report</a>
+        </div>
+
+        <div class="card project-card" data-aos="fade-up">
+            <h3>🖨️ Additive Manufacturing & 3D Printing</h3>
+            <p>Personally executed slicing and 3D printing of functional models to test parametric complex geometries.</p>
+            <a href="Additive_Manufacturing_Report.pdf" class="report-btn">View Report</a>
         </div>
     </section>
 
@@ -138,20 +175,6 @@
             <div class="skill-badge" data-aos="zoom-in">GD&T</div>
             <div class="skill-badge" data-aos="zoom-in">Graphic Design</div>
             <div class="skill-badge" data-aos="zoom-in">Tech Writing</div>
-            <div class="skill-badge" data-aos="zoom-in">Public Speaking</div>
-            <div class="skill-badge" data-aos="zoom-in">Social Media</div>
-        </div>
-    </section>
-
-    <section>
-        <h2>Projects</h2>
-        <div class="card" data-aos="fade-up">
-            <h3>⚙️ 3-Speed Gearbox</h3>
-            <p>Performed model design and ANSYS performance analysis using SolidWorks.</p>
-        </div>
-        <div class="card" data-aos="fade-up">
-            <h3>🔩 Screw Jack Fabrication</h3>
-            <p>Led team as project coordinator for design and fabrication.</p>
         </div>
     </section>
 </div>
@@ -159,20 +182,12 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
 <script>
     AOS.init({ duration: 800, once: true });
-
     function smartEmail() {
         const email = "nafjal99@gmail.com";
-        const subject = "Inquiry from Engineering Portfolio";
         const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
-
-        if (isMobile) {
-            window.location.href = `mailto:${email}?subject=${encodeURIComponent(subject)}`;
-        } else {
-            const gmailUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=${email}&su=${encodeURIComponent(subject)}`;
-            window.open(gmailUrl, '_blank');
-        }
+        if (isMobile) { window.location.href = `mailto:${email}`; }
+        else { window.open(`https://mail.google.com/mail/?view=cm&fs=1&to=${email}`, '_blank'); }
     }
 </script>
-
 </body>
 </html>
