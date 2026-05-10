@@ -187,10 +187,14 @@
             const y = e.clientY - rect.top - rect.height / 2;
             btn.style.transform = `translate(${x * 0.3}px, ${y * 0.3}px)`;
             cursor.style.transform = 'scale(2)';
+            // ADD THIS LINE BELOW:
+            cursor.style.background = 'rgba(37, 99, 235, 0.1)'; 
         });
         btn.addEventListener('mouseleave', () => {
             btn.style.transform = '';
             cursor.style.transform = '';
+            // ADD THIS LINE BELOW:
+            cursor.style.background = 'transparent';
         });
     });
 </script>
