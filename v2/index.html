@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Syed Md Noor Afjal | Engineering Portfolio</title>
+    <title>Syed Md Noor Afjal | Executive Portfolio</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
     <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@400;600;700&family=Space+Mono&display=swap" rel="stylesheet">
     
@@ -12,25 +12,25 @@
             --primary: #2563eb; 
             --success: #10b981; 
             --dark: #0f172a; 
-            --glass: rgba(255, 255, 255, 0.7);
+            --glass: rgba(255, 255, 255, 0.65);
         }
 
-        /* 3. CUSTOM CURSOR */
+        /* 1. CURSOR FIX (Z-INDEX) */
         #cursor {
-            width: 20px; height: 20px; border: 2px solid var(--primary);
+            width: 25px; height: 25px; border: 2px solid var(--primary);
             border-radius: 50%; position: fixed; pointer-events: none;
-            transition: transform 0.1s ease, background 0.3s ease; z-index: 9999;
-            display: none; /* Hidden on mobile */
+            transition: transform 0.1s ease-out, background 0.3s ease; 
+            z-index: 10000; /* Ensures it is on top of everything */
+            transform: translate(-50%, -50%);
+            display: none;
         }
-        @media (min-width: 1024px) { #cursor { display: block; } }
+        @media (min-width: 1024px) { #cursor { display: block; } body { cursor: none; } }
 
         body { 
             font-family: 'Lexend', sans-serif; margin: 0; background: #f8fafc; 
-            cursor: none; /* Hide default cursor for custom one */
-            scroll-behavior: smooth;
+            scroll-behavior: smooth; overflow-x: hidden;
         }
 
-        /* 1. MESH BACKGROUND */
         .mesh-bg {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%;
             background: radial-gradient(at 0% 0%, #cbd5e1 0%, #f8fafc 50%),
@@ -46,61 +46,60 @@
         .profile-img {
             width: 150px; height: 150px; border-radius: 50%;
             border: 3px solid var(--primary); margin-bottom: 1rem;
-            object-fit: cover; box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            object-fit: cover;
         }
 
         .container { max-width: 900px; margin: auto; padding: 2rem; }
         
-        /* 4. TYPOGRAPHY HIERARCHY */
         h2 { 
-            font-family: 'Lexend', sans-serif; font-weight: 700; color: var(--dark); 
-            letter-spacing: -0.5px; border-left: 5px solid var(--primary); 
+            font-weight: 700; color: var(--dark); border-left: 5px solid var(--primary); 
             padding-left: 15px; margin: 4rem 0 2rem 0;
         }
 
-        /* 1 & 2. GLASS CARDS + GRADIENT BORDERS */
+        /* 2. GLASSMORPHISM FIX */
         .card { 
-            background: var(--glass); backdrop-filter: blur(10px);
+            background: var(--glass); 
+            backdrop-filter: blur(12px); /* Blurred background */
+            -webkit-backdrop-filter: blur(12px);
             border-radius: 16px; padding: 2rem; margin-bottom: 2rem;
-            border: 1px solid rgba(255, 255, 255, 0.5);
+            border: 1px solid rgba(255, 255, 255, 0.4);
             transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            position: relative; overflow: hidden;
+            position: relative;
         }
 
         .card:hover { 
-            transform: translateY(-8px) scale(1.02);
-            box-shadow: 0 0 25px 5px rgba(16, 185, 129, 0.3);
+            transform: translateY(-8px);
+            box-shadow: 0 0 30px 5px rgba(16, 185, 129, 0.3);
             border-color: var(--success);
+            background: rgba(255, 255, 255, 0.85);
         }
 
-        /* 5. MAGNETIC BUTTONS (Handled by JS) */
-        .magnetic-wrap { display: inline-block; transition: transform 0.2s ease-out; }
-
         .btn {
-            padding: 0.8rem 2rem; border-radius: 12px; font-weight: 600;
+            padding: 0.8rem 1.8rem; border-radius: 12px; font-weight: 600;
             text-decoration: none; display: inline-flex; align-items: center; gap: 8px;
             transition: 0.3s; border: none; cursor: pointer;
         }
         .btn-primary { background: var(--primary); color: white; }
         .btn-success { background: var(--success); color: white; }
+        .btn-outline { border: 2px solid white; color: white; background: transparent; }
 
-        /* Project Layout (Centering and Shifting) */
         .project-content { transition: transform 0.4s ease; }
-        .card:hover .project-content { transform: translateY(-30px); }
+        .project-card:hover .project-content { transform: translateY(-35px); }
 
         .report-btn {
             position: absolute; bottom: 1.5rem; left: 50%;
             transform: translate(-50%, 20px); opacity: 0;
             transition: all 0.4s ease;
         }
-        .card:hover .report-btn { opacity: 1; transform: translate(-50%, 0); }
+        .project-card:hover .report-btn { opacity: 1; transform: translate(-50%, 0); }
 
         .badge { 
-            font-family: 'Space Mono', monospace; font-size: 0.7rem; 
-            background: #e2e8f0; color: var(--dark); padding: 4px 10px; border-radius: 5px;
+            font-family: 'Space Mono', monospace; font-size: 0.75rem; 
+            background: #dbeafe; color: #1e40af; padding: 4px 10px; border-radius: 6px;
         }
         
-        .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 1rem; }
+        .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 1rem; }
+        .skill-item { text-align: center; padding: 1.5rem !important; margin-bottom: 0; }
     </style>
 </head>
 <body>
@@ -111,10 +110,11 @@
 <header>
     <img src="profile.jpg" alt="Syed Md Noor Afjal" class="profile-img" data-aos="zoom-in">
     <h1 data-aos="fade-down">SYED MD NOOR AFJAL</h1>
-    <p data-aos="fade-up">Mechanical Engineer | KIIT DU | <strong>CGPA: 9.25</strong></p>
-    <div style="margin-top:20px;">
-        <a href="tel:+919051602269" class="btn btn-primary magnetic">📞 Call Now</a>
-        <a href="Noor_Resume.pdf" target="_blank" class="btn btn-success magnetic" style="margin-left:10px;">📄 Resume</a>
+    <p data-aos="fade-up">Mechanical Engineer | KIIT DU | <strong>9.25 CGPA</strong></p>
+    <div style="margin-top:20px; display: flex; justify-content: center; gap: 15px; flex-wrap: wrap;">
+        <button onclick="smartEmail()" class="btn btn-primary magnetic">✉️ Email Me</button>
+        <a href="tel:+919051602269" class="btn btn-success magnetic">📞 Call Now</a>
+        <a href="Noor_Resume.pdf" target="_blank" class="btn btn-outline magnetic">📄 Resume</a>
     </div>
 </header>
 
@@ -122,47 +122,57 @@
     <section data-aos="fade-up">
         <h2>About Me</h2>
         <div class="card">
-            <p>Results-driven Mechanical Engineering student at KIIT. Proven expertise in process optimization at <strong>Amazon</strong> and technical design in <strong>SolidWorks/ANSYS</strong>.</p>
+            <p>I am a results-driven Mechanical Engineering student recognized for delivering high-impact process optimizations and technical reports. Expert in <strong>SolidWorks</strong> and <strong>ANSYS</strong>.</p>
+        </div>
+    </section>
+
+    <section>
+        <h2>Leadership & Community</h2>
+        <div class="card" data-aos="fade-up">
+            <p><strong>Department Head - NSS SME (Kruti)</strong> <span class="badge">2025 - 2026</span></p>
+            <p><strong>Writing & Documentation Head</strong> <span class="badge">2024 - 2026</span></p>
+            <p><strong>NSS Volunteer</strong> <span class="badge">2023 - 2026</span></p>
         </div>
     </section>
 
     <section>
         <h2>Technical & Creative Skills</h2>
         <div class="skills-grid">
-            <div class="card" style="padding: 1rem; text-align: center; margin:0;" data-aos="zoom-in">AutoCAD</div>
-            <div class="card" style="padding: 1rem; text-align: center; margin:0;" data-aos="zoom-in">SolidWorks</div>
-            <div class="card" style="padding: 1rem; text-align: center; margin:0;" data-aos="zoom-in">ANSYS</div>
-            <div class="card" style="padding: 1rem; text-align: center; margin:0;" data-aos="zoom-in">Graphic Design</div>
-            <div class="card" style="padding: 1rem; text-align: center; margin:0;" data-aos="zoom-in">Tech Writing</div>
-            <div class="card" style="padding: 1rem; text-align: center; margin:0;" data-aos="zoom-in">Public Speaking</div>
+            <div class="card skill-item" data-aos="zoom-in">AutoCAD</div>
+            <div class="card skill-item" data-aos="zoom-in">SolidWorks</div>
+            <div class="card skill-item" data-aos="zoom-in">ANSYS</div>
+            <div class="card skill-item" data-aos="zoom-in">Graphic Design</div>
+            <div class="card skill-item" data-aos="zoom-in">Tech Writing</div>
+            <div class="card skill-item" data-aos="zoom-in">Public Speaking</div>
+            <div class="card skill-item" data-aos="zoom-in">Social Media</div>
+            <div class="card skill-item" data-aos="zoom-in">GD&T</div>
         </div>
     </section>
 
     <section>
         <h2>Engineering Projects</h2>
-        <div class="card" data-aos="fade-up">
+        <div class="card project-card" data-aos="fade-up">
             <div class="project-content">
                 <h3>⚙️ 3-Speed Gearbox</h3>
-                <p>Designed and analyzed shifting mechanisms for torque optimization using SolidWorks.</p>
+                <p>Designed the shifting mechanism and gears for smooth transitions using <strong>SolidWorks</strong>.</p>
             </div>
             <a href="Gearbox_Report.docx" class="btn btn-success report-btn">View Report</a>
         </div>
 
-        <div class="card" data-aos="fade-up">
+        <div class="card project-card" data-aos="fade-up">
+            <div class="project-content">
+                <h3>🔩 Scissor Screw Jack</h3>
+                <p>Managed end-to-end fabrication with a 200kg capacity. Led as <strong>Project Coordinator</strong>.</p>
+            </div>
+            <a href="Screw_Jack_PPT.pdf" class="btn btn-success report-btn">View Presentation</a>
+        </div>
+
+        <div class="card project-card" data-aos="fade-up">
             <div class="project-content">
                 <h3>🖨️ Additive Manufacturing</h3>
-                <p>Practical execution of slicing and 3D printing for parametric model testing.</p>
+                <p>Executed slicing and 3D printing of functional models for complex geometries.</p>
             </div>
             <a href="Additive_Manufacturing_Report.pdf" class="btn btn-success report-btn">View Report</a>
-        </div>
-    </section>
-
-    <section>
-        <h2>Leadership</h2>
-        <div class="card" data-aos="fade-up">
-            <p><strong>Department Head - NSS Kruti</strong> <span class="badge">2025-2026</span></p>
-            <p><strong>Documentation Head</strong> <span class="badge">2024-2026</span></p>
-            <p><strong>NSS Volunteer</strong> <span class="badge">2023-2026</span></p>
         </div>
     </section>
 </div>
@@ -171,29 +181,34 @@
 <script>
     AOS.init({ duration: 800, once: true });
 
-    // 3. CURSOR LOGIC
+    // EMAIL LOGIC
+    function smartEmail() {
+        const email = "nafjal99@gmail.com";
+        const subject = "Inquiry from Portfolio";
+        window.open(`https://mail.google.com/mail/?view=cm&fs=1&to=${email}&su=${encodeURIComponent(subject)}`, '_blank');
+    }
+
+    // CURSOR LOGIC
     const cursor = document.getElementById('cursor');
     document.addEventListener('mousemove', e => {
         cursor.style.left = e.clientX + 'px';
         cursor.style.top = e.clientY + 'px';
     });
 
-    // 5. MAGNETIC BUTTONS LOGIC
+    // MAGNETIC LOGIC
     const magnetics = document.querySelectorAll('.magnetic');
     magnetics.forEach(btn => {
         btn.addEventListener('mousemove', e => {
             const rect = btn.getBoundingClientRect();
             const x = e.clientX - rect.left - rect.width / 2;
             const y = e.clientY - rect.top - rect.height / 2;
-            btn.style.transform = `translate(${x * 0.3}px, ${y * 0.3}px)`;
-            cursor.style.transform = 'scale(2)';
-            // ADD THIS LINE BELOW:
-            cursor.style.background = 'rgba(37, 99, 235, 0.1)'; 
+            btn.style.transform = `translate(${x * 0.35}px, ${y * 0.35}px)`;
+            cursor.style.transform = 'translate(-50%, -50%) scale(2.5)';
+            cursor.style.background = 'rgba(37, 99, 235, 0.15)';
         });
         btn.addEventListener('mouseleave', () => {
             btn.style.transform = '';
-            cursor.style.transform = '';
-            // ADD THIS LINE BELOW:
+            cursor.style.transform = 'translate(-50%, -50%) scale(1)';
             cursor.style.background = 'transparent';
         });
     });
