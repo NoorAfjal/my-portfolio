@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Syed Md Noor Afjal | Executive v2</title>
+    <title>Syed Md Noor Afjal | Executive Portfolio</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
     <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@400;600;700&family=Space+Mono&display=swap" rel="stylesheet">
     
@@ -12,10 +12,11 @@
             --primary: #2563eb; 
             --success: #10b981; 
             --dark: #0f172a; 
-            --glass: rgba(255, 255, 255, 0.35); /* Thinner for more blur depth */
+            --glass: rgba(255, 255, 255, 0.35);
             --glass-border: rgba(255, 255, 255, 0.7);
         }
 
+        /* CUSTOM CURSOR */
         #cursor {
             width: 25px; height: 25px; border: 2px solid var(--primary);
             border-radius: 50%; position: fixed; pointer-events: none;
@@ -36,24 +37,36 @@
             background: 
                 radial-gradient(circle at 15% 15%, #dbeafe 0%, transparent 45%),
                 radial-gradient(circle at 85% 85%, #f0fdf4 0%, transparent 45%),
-                url('https://www.transparenttextures.com/patterns/white-diamond.png'), /* Frost texture */
+                url('https://www.transparenttextures.com/patterns/white-diamond.png'),
                 #f8fafc;
             opacity: 0.8; z-index: -1;
         }
 
+        /* PROFILE HEADER SECTION */
         header { 
             background: var(--dark); color: white; padding: 7rem 2rem; 
             text-align: center; clip-path: polygon(0 0, 100% 0, 100% 88%, 0 100%);
+            position: relative; z-index: 10;
         }
 
-        .profile-img { width: 150px; height: 150px; border-radius: 50%; border: 3px solid var(--primary); margin-bottom: 1rem; object-fit: cover; }
-        .container { max-width: 900px; margin: auto; padding: 2rem; }
-        h2 { font-weight: 700; color: var(--dark); border-left: 6px solid var(--primary); padding-left: 18px; margin: 4.5rem 0 2.5rem 0; text-transform: uppercase; letter-spacing: 1px; }
+        .profile-img { 
+            width: 150px; height: 150px; border-radius: 50%; 
+            border: 3px solid var(--primary); margin-bottom: 1rem; 
+            object-fit: cover; box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
 
-        /* THE FROSTED GLASS EFFECT */
+        .container { max-width: 900px; margin: auto; padding: 2rem; }
+        
+        h2 { 
+            font-weight: 700; color: var(--dark); border-left: 6px solid var(--primary); 
+            padding-left: 18px; margin: 4.5rem 0 2.5rem 0; 
+            text-transform: uppercase; letter-spacing: 1px; 
+        }
+
+        /* FROSTED GLASS CARDS */
         .card { 
             background: var(--glass); 
-            backdrop-filter: blur(25px) saturate(200%); /* Max blur and saturation */
+            backdrop-filter: blur(25px) saturate(200%);
             -webkit-backdrop-filter: blur(25px) saturate(200%);
             border-radius: 24px; padding: 2.5rem; margin-bottom: 2.5rem;
             border: 1px solid var(--glass-border);
@@ -69,17 +82,32 @@
             background: rgba(255, 255, 255, 0.55);
         }
 
-        .btn { padding: 0.9rem 2rem; border-radius: 14px; font-weight: 600; text-decoration: none; display: inline-flex; align-items: center; gap: 10px; transition: 0.3s; border: none; cursor: pointer; }
+        /* BUTTONS */
+        .btn { 
+            padding: 0.9rem 2rem; border-radius: 14px; font-weight: 600; 
+            text-decoration: none; display: inline-flex; align-items: center; 
+            gap: 10px; transition: 0.3s; border: none; cursor: pointer; 
+        }
         .btn-primary { background: var(--primary); color: white; }
         .btn-success { background: var(--success); color: white; }
         .btn-outline { border: 2px solid rgba(255,255,255,0.4); color: white; background: transparent; }
 
+        /* PROJECT LOGIC */
         .project-content { transition: transform 0.4s ease; }
         .project-card:hover .project-content { transform: translateY(-45px); }
-        .report-btn { position: absolute; bottom: 2rem; left: 50%; transform: translate(-50%, 25px); opacity: 0; transition: all 0.4s ease; }
+        .report-btn { 
+            position: absolute; bottom: 2rem; left: 50%; 
+            transform: translate(-50%, 25px); opacity: 0; 
+            transition: all 0.4s ease; 
+        }
         .project-card:hover .report-btn { opacity: 1; transform: translate(-50%, 0); }
 
-        .badge { font-family: 'Space Mono', monospace; font-size: 0.75rem; background: #dbeafe; color: #1e40af; padding: 5px 12px; border-radius: 8px; font-weight: bold; }
+        .badge { 
+            font-family: 'Space Mono', monospace; font-size: 0.75rem; 
+            background: #dbeafe; color: #1e40af; padding: 5px 12px; 
+            border-radius: 8px; font-weight: bold; 
+        }
+
         .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 1.2rem; }
         .skill-item { text-align: center; padding: 1.8rem !important; margin: 0; }
     </style>
@@ -101,10 +129,18 @@
 </header>
 
 <div class="container">
+    
+    <section data-aos="fade-up">
+        <h2>About Me</h2>
+        <div class="card">
+            <p>I am a results-driven Mechanical Engineering student at KIIT, recognized for delivering high-impact process optimizations at <strong>Amazon</strong> and technical design expertise in <strong>SolidWorks</strong> and <strong>ANSYS</strong>.</p>
+        </div>
+    </section>
+
     <section data-aos="fade-up">
         <h2>Experience</h2>
         <div class="card">
-            <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 15px;">
+            <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 15px; flex-wrap: wrap; gap: 10px;">
                 <h3 style="margin: 0; color: var(--dark);">Program Manager Intern | Amazon</h3>
                 <span class="badge">JUN 2025 - NOV 2025</span>
             </div>
@@ -114,13 +150,13 @@
             </ul>
         </div>
         <div class="card">
-            <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 15px;">
+            <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 15px; flex-wrap: wrap; gap: 10px;">
                 <h3 style="margin: 0; color: var(--dark);">Engineering Intern | L&T Minerals & Metals</h3>
                 <span class="badge">MAY 2024 - JUN 2024</span>
             </div>
             <ul>
-                <li>Exposure to coco-win byproduct plant and industrial fabrication operations.</li>
-                <li>Assisted in technical documentation and production flow monitoring.</li>
+                <li>Exposure to the coco-win byproduct plant and industrial fabrication operations.</li>
+                <li>Assisted in technical documentation and production flow monitoring at the plant.</li>
             </ul>
         </div>
     </section>
@@ -150,6 +186,7 @@
 
     <section>
         <h2>Engineering Projects</h2>
+        
         <div class="card project-card" data-aos="fade-up">
             <div class="project-content">
                 <h3>⚙️ 3-Speed Gearbox</h3>
@@ -161,7 +198,7 @@
         <div class="card project-card" data-aos="fade-up">
             <div class="project-content">
                 <h3>🔩 Scissor Screw Jack Fabrication</h3>
-                <p>Managed fabrication of a 200kg capacity jack. Focused on square thread geometry.</p>
+                <p>Managed fabrication of a 200kg capacity jack. Focused on square thread geometry and welding.</p>
             </div>
             <a href="METHODS FOR MAKING SCREW JACK.pptx" class="btn btn-success report-btn">View Presentation</a>
         </div>
