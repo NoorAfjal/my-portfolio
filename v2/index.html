@@ -12,16 +12,17 @@
             --primary: #2563eb; 
             --success: #10b981; 
             --dark: #0f172a; 
-            --glass: rgba(255, 255, 255, 0.65);
+            /* True Glass Colors */
+            --glass-bg: rgba(255, 255, 255, 0.4);
+            --glass-border: rgba(255, 255, 255, 0.6);
         }
 
-        /* 1. CURSOR FIX (Z-INDEX) */
+        /* 1. CUSTOM CURSOR */
         #cursor {
             width: 25px; height: 25px; border: 2px solid var(--primary);
             border-radius: 50%; position: fixed; pointer-events: none;
             transition: transform 0.1s ease-out, background 0.3s ease; 
-            z-index: 10000; /* Ensures it is on top of everything */
-            transform: translate(-50%, -50%);
+            z-index: 10000; transform: translate(-50%, -50%);
             display: none;
         }
         @media (min-width: 1024px) { #cursor { display: block; } body { cursor: none; } }
@@ -31,73 +32,59 @@
             scroll-behavior: smooth; overflow-x: hidden;
         }
 
+        /* 2. MESH BG (Crucial for Glassmorphism Contrast) */
         .mesh-bg {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: radial-gradient(at 0% 0%, #cbd5e1 0%, #f8fafc 50%),
-                        radial-gradient(at 100% 100%, #e2e8f0 0%, #f8fafc 50%);
+            background: 
+                radial-gradient(circle at 10% 20%, #dbeafe 0%, transparent 40%),
+                radial-gradient(circle at 90% 80%, #f0fdf4 0%, transparent 40%),
+                radial-gradient(circle at 50% 50%, #f1f5f9 0%, transparent 80%);
             z-index: -1;
         }
 
         header { 
             background: var(--dark); color: white; padding: 6rem 2rem; 
-            text-align: center; clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+            text-align: center; clip-path: polygon(0 0, 100% 0, 100% 88%, 0 100%);
         }
 
-        .profile-img {
-            width: 150px; height: 150px; border-radius: 50%;
-            border: 3px solid var(--primary); margin-bottom: 1rem;
-            object-fit: cover;
-        }
+        .profile-img { width: 150px; height: 150px; border-radius: 50%; border: 3px solid var(--primary); margin-bottom: 1rem; object-fit: cover; }
 
         .container { max-width: 900px; margin: auto; padding: 2rem; }
         
-        h2 { 
-            font-weight: 700; color: var(--dark); border-left: 5px solid var(--primary); 
-            padding-left: 15px; margin: 4rem 0 2rem 0;
-        }
+        h2 { font-weight: 700; color: var(--dark); border-left: 5px solid var(--primary); padding-left: 15px; margin: 4rem 0 2rem 0; }
 
-        /* 2. GLASSMORPHISM FIX */
+        /* 3. ENHANCED GLASS CARD */
         .card { 
-            background: var(--glass); 
-            backdrop-filter: blur(12px); /* Blurred background */
-            -webkit-backdrop-filter: blur(12px);
-            border-radius: 16px; padding: 2rem; margin-bottom: 2rem;
-            border: 1px solid rgba(255, 255, 255, 0.4);
+            background: var(--glass-bg); 
+            backdrop-filter: blur(18px) saturate(160%);
+            -webkit-backdrop-filter: blur(18px) saturate(160%);
+            border-radius: 20px; padding: 2.2rem; margin-bottom: 2rem;
+            border: 1px solid var(--glass-border);
             transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             position: relative;
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.08);
         }
 
         .card:hover { 
-            transform: translateY(-8px);
-            box-shadow: 0 0 30px 5px rgba(16, 185, 129, 0.3);
+            transform: translateY(-10px);
+            box-shadow: 0 0 40px 10px rgba(16, 185, 129, 0.35); /* Thick Green Glow */
             border-color: var(--success);
-            background: rgba(255, 255, 255, 0.85);
+            background: rgba(255, 255, 255, 0.7);
         }
 
-        .btn {
-            padding: 0.8rem 1.8rem; border-radius: 12px; font-weight: 600;
-            text-decoration: none; display: inline-flex; align-items: center; gap: 8px;
-            transition: 0.3s; border: none; cursor: pointer;
-        }
+        /* Buttons & Interactions */
+        .btn { padding: 0.8rem 1.8rem; border-radius: 12px; font-weight: 600; text-decoration: none; display: inline-flex; align-items: center; gap: 8px; transition: 0.3s; border: none; cursor: pointer; }
         .btn-primary { background: var(--primary); color: white; }
         .btn-success { background: var(--success); color: white; }
         .btn-outline { border: 2px solid white; color: white; background: transparent; }
 
         .project-content { transition: transform 0.4s ease; }
-        .project-card:hover .project-content { transform: translateY(-35px); }
+        .project-card:hover .project-content { transform: translateY(-40px); }
 
-        .report-btn {
-            position: absolute; bottom: 1.5rem; left: 50%;
-            transform: translate(-50%, 20px); opacity: 0;
-            transition: all 0.4s ease;
-        }
+        .report-btn { position: absolute; bottom: 1.8rem; left: 50%; transform: translate(-50%, 20px); opacity: 0; transition: all 0.4s ease; }
         .project-card:hover .report-btn { opacity: 1; transform: translate(-50%, 0); }
 
-        .badge { 
-            font-family: 'Space Mono', monospace; font-size: 0.75rem; 
-            background: #dbeafe; color: #1e40af; padding: 4px 10px; border-radius: 6px;
-        }
-        
+        .badge { font-family: 'Space Mono', monospace; font-size: 0.75rem; background: #dbeafe; color: #1e40af; padding: 4px 10px; border-radius: 6px; }
         .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 1rem; }
         .skill-item { text-align: center; padding: 1.5rem !important; margin-bottom: 0; }
     </style>
@@ -111,7 +98,7 @@
     <img src="profile.jpg" alt="Syed Md Noor Afjal" class="profile-img" data-aos="zoom-in">
     <h1 data-aos="fade-down">SYED MD NOOR AFJAL</h1>
     <p data-aos="fade-up">Mechanical Engineer | KIIT DU | <strong>9.25 CGPA</strong></p>
-    <div style="margin-top:20px; display: flex; justify-content: center; gap: 15px; flex-wrap: wrap;">
+    <div style="margin-top:25px; display: flex; justify-content: center; gap: 15px; flex-wrap: wrap;">
         <button onclick="smartEmail()" class="btn btn-primary magnetic">✉️ Email Me</button>
         <a href="tel:+919051602269" class="btn btn-success magnetic">📞 Call Now</a>
         <a href="Noor_Resume.pdf" target="_blank" class="btn btn-outline magnetic">📄 Resume</a>
@@ -154,7 +141,7 @@
         <div class="card project-card" data-aos="fade-up">
             <div class="project-content">
                 <h3>⚙️ 3-Speed Gearbox</h3>
-                <p>Designed the shifting mechanism and gears for smooth transitions using <strong>SolidWorks</strong>.</p>
+                <p>Designed the shifting mechanism and gears for torque optimization using <strong>SolidWorks</strong> and <strong>ANSYS</strong>.</p>
             </div>
             <a href="Gearbox_Report.docx" class="btn btn-success report-btn">View Report</a>
         </div>
@@ -162,15 +149,23 @@
         <div class="card project-card" data-aos="fade-up">
             <div class="project-content">
                 <h3>🔩 Scissor Screw Jack</h3>
-                <p>Managed end-to-end fabrication with a 200kg capacity. Led as <strong>Project Coordinator</strong>.</p>
+                <p>Managed fabrication including square thread geometry. Lifting strength of <strong>200 kg</strong>.</p>
             </div>
             <a href="Screw_Jack_PPT.pdf" class="btn btn-success report-btn">View Presentation</a>
         </div>
 
         <div class="card project-card" data-aos="fade-up">
             <div class="project-content">
+                <h3>🌀 Mini Drilling and Cutting Machine</h3>
+                <p>Developed a compact, dual-purpose tool for small-scale fabrication. Integrated mechanical components for efficiency.</p>
+            </div>
+            <a href="Drilling_Machine_Report.pdf" class="btn btn-success report-btn">View Report</a>
+        </div>
+
+        <div class="card project-card" data-aos="fade-up">
+            <div class="project-content">
                 <h3>🖨️ Additive Manufacturing</h3>
-                <p>Executed slicing and 3D printing of functional models for complex geometries.</p>
+                <p>Executed slicing and 3D printing of functional models to test parametric complex geometries.</p>
             </div>
             <a href="Additive_Manufacturing_Report.pdf" class="btn btn-success report-btn">View Report</a>
         </div>
@@ -181,21 +176,17 @@
 <script>
     AOS.init({ duration: 800, once: true });
 
-    // EMAIL LOGIC
     function smartEmail() {
         const email = "nafjal99@gmail.com";
-        const subject = "Inquiry from Portfolio";
-        window.open(`https://mail.google.com/mail/?view=cm&fs=1&to=${email}&su=${encodeURIComponent(subject)}`, '_blank');
+        window.open(`https://mail.google.com/mail/?view=cm&fs=1&to=${email}`, '_blank');
     }
 
-    // CURSOR LOGIC
     const cursor = document.getElementById('cursor');
     document.addEventListener('mousemove', e => {
         cursor.style.left = e.clientX + 'px';
         cursor.style.top = e.clientY + 'px';
     });
 
-    // MAGNETIC LOGIC
     const magnetics = document.querySelectorAll('.magnetic');
     magnetics.forEach(btn => {
         btn.addEventListener('mousemove', e => {
