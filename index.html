@@ -22,56 +22,57 @@
         .container { max-width: 1000px; margin: auto; padding: 2rem; }
         h2 { color: var(--dark); border-left: 5px solid var(--primary); padding-left: 15px; margin: 3rem 0 1.5rem 0; }
         
-        /* General Card Styling */
-        .card { 
+        /* Universal Card/Box Styling */
+        .card, .skill-badge { 
             background: white; padding: 2rem; border-radius: 12px; 
             box-shadow: 0 4px 6px rgba(0,0,0,0.05); margin-bottom: 2rem;
             transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             border: 1px solid #e2e8f0;
             position: relative;
+            cursor: pointer;
         }
 
-        /* PROJECT CARD SPECIAL HOVER EFFECT */
-        .project-card { cursor: pointer; overflow: hidden; }
-        .project-card p { transition: transform 0.4s ease; }
-        
-        .project-card:hover, .project-card:active { 
-            transform: scale(1.03); 
+        /* The Unified Pop & Thick Green Glow Effect */
+        .card:hover, .card:active, .skill-badge:hover { 
+            transform: scale(1.04); 
             border-color: var(--success);
-            /* Static green glow with fade effect */
-            box-shadow: 0 0 20px 5px rgba(16, 185, 129, 0.3); 
+            box-shadow: 0 0 30px 8px rgba(16, 185, 129, 0.4); 
+            z-index: 5;
         }
 
+        /* Project Specific Alignment Logic */
+        .project-card h3, .project-card p {
+            transition: transform 0.4s ease;
+        }
+
+        .project-card:hover h3, .project-card:active h3,
         .project-card:hover p, .project-card:active p {
-            transform: translateY(-10px);
+            transform: translateY(-40px); /* Significant shift to clear the button */
         }
 
-        /* Report Button Logic */
+        /* Centered Report Button */
         .report-btn {
-            display: inline-block; padding: 10px 20px;
+            display: inline-block; padding: 10px 24px;
             background: var(--success); color: white; text-decoration: none;
             border-radius: 8px; font-size: 0.9rem; font-weight: 600;
             transition: all 0.4s ease;
-            opacity: 0; transform: translateY(20px);
-            position: absolute; bottom: 1.5rem; left: 2rem;
+            opacity: 0; transform: translate(-50%, 20px);
+            position: absolute; bottom: 1.5rem; left: 50%; /* Centered */
         }
 
         .project-card:hover .report-btn, .project-card:active .report-btn {
-            opacity: 1; transform: translateY(0);
+            opacity: 1; transform: translate(-50%, 0);
         }
 
-        /* Timeline & Skills (Kept the same) */
+        /* Timeline Styling */
         .timeline-item { border-left: 2px solid #e2e8f0; padding-left: 20px; position: relative; margin-bottom: 20px; }
         .timeline-item::before { content: ''; width: 12px; height: 12px; background: var(--primary); border-radius: 50%; position: absolute; left: -7px; top: 5px; }
         
-        .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 1rem; }
-        .skill-badge { 
-            background: white; padding: 1rem; border-radius: 10px; 
-            text-align: center; border: 1px solid #e2e8f0; font-weight: 600;
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-        }
-        .skill-badge:hover { transform: scale(1.1); background: var(--primary); color: white; }
+        /* Skills Grid */
+        .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 1.5rem; margin-bottom: 3rem; }
+        .skill-badge { padding: 1.5rem; margin-bottom: 0; font-weight: 600; text-align: center; }
 
+        /* General UI Elements */
         .btn-container { display: flex; justify-content: center; gap: 15px; flex-wrap: wrap; margin-top: 2rem; }
         .btn { display: inline-flex; align-items: center; gap: 8px; padding: 0.8rem 1.8rem; border-radius: 30px; text-decoration: none; font-weight: 600; transition: 0.3s; cursor: pointer; border: none; }
         .btn-primary { background: var(--primary); color: white; }
@@ -96,15 +97,17 @@
 <div class="container">
     <section data-aos="fade-up">
         <h2>About Me</h2>
-        <p>I am a results-driven Mechanical Engineering student recognized for delivering high-impact process optimizations and technical reports. With a strong CGPA of 9.25, I combine technical expertise in SolidWorks and ANSYS with a proven ability to lead cross-functional teams.</p>
+        <div class="card">
+            <p>I am a results-driven Mechanical Engineering student recognized for delivering high-impact process optimizations and technical reports. With a strong CGPA of 9.25, I combine technical expertise in SolidWorks and ANSYS with a proven ability to lead cross-functional teams.</p>
+        </div>
     </section>
 
     <section>
         <h2>Experience</h2>
         <div class="card" data-aos="fade-left">
-            <div style="display: flex; justify-content: space-between; align-items: center;">
+            <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap;">
                 <h3 style="margin: 0;">Intern | Amazon</h3>
-                <span class="badge">2025</span>
+                <span class="badge">JUNE 2025 - NOV 2025</span>
             </div>
             <ul>
                 <li>Improved vendor onboarding by 33% and tax interview time by 80%.</li>
@@ -112,13 +115,13 @@
             </ul>
         </div>
         <div class="card" data-aos="fade-right">
-            <div style="display: flex; justify-content: space-between; align-items: center;">
+            <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap;">
                 <h3 style="margin: 0;">Intern | Larsen & Toubro</h3>
-                <span class="badge">2024</span>
+                <span class="badge">MAY 2024 - JUNE 2024</span>
             </div>
             <ul>
-                <li>Gained hands-on exposure to manufacturing and fabrication operations.</li>
-                <li>Maintained activity records and prepared technical reports.</li>
+                <li>Gained hands-on exposure to manufacturing processes and fabrication operations.</li>
+                <li>Maintained accurate activity records and prepared technical reports.</li>
             </ul>
         </div>
     </section>
@@ -127,42 +130,14 @@
         <h2>Leadership & Community</h2>
         <div class="card" data-aos="fade-up">
             <div class="timeline-item">
-                <strong>Department Head - NSS SME (Kruti)</strong> <span class="badge">2025 - Present</span>
+                <strong>Department Head - NSS SME (Kruti)</strong> <span class="badge">2025 - 2026</span>
             </div>
             <div class="timeline-item">
-                <strong>Writing & Documentation Head</strong> <span class="badge">2024 - 2025</span>
+                <strong>Writing & Documentation Head</strong> <span class="badge">2024 - 2026</span>
             </div>
             <div class="timeline-item">
-                <strong>NSS Volunteer</strong> <span class="badge">2023 - 2024</span>
+                <strong>NSS Volunteer</strong> <span class="badge">2023 - 2026</span>
             </div>
-        </div>
-    </section>
-
-    <section>
-        <h2>Engineering Projects</h2>
-        
-        <div class="card project-card" data-aos="fade-up">
-            <h3>⚙️ 3-Speed Gearbox</h3>
-            <p>Designed the shifting mechanism and gears for smooth transitions using <strong>SolidWorks</strong> and <strong>ANSYS</strong> performance analysis.</p>
-            <a href="Gearbox_Report.docx" class="report-btn">View Report</a>
-        </div>
-
-        <div class="card project-card" data-aos="fade-up">
-            <h3>🔩 Scissor Screw Jack Fabrication</h3>
-            <p>Managed end-to-end fabrication including square thread geometry and welding. Led the project as <strong>Project Coordinator</strong>.</p>
-            <a href="Screw_Jack_PPT.pdf" class="report-btn">View Presentation</a>
-        </div>
-
-        <div class="card project-card" data-aos="fade-up">
-            <h3>🌀 Mini Drilling and Cutting Machine</h3>
-            <p>Developed a dual-purpose tool for small-scale fabrication. Integrated mechanical components for efficient workshop use.</p>
-            <a href="Drilling_Machine_Report.pdf" class="report-btn">View Report</a>
-        </div>
-
-        <div class="card project-card" data-aos="fade-up">
-            <h3>🖨️ Additive Manufacturing & 3D Printing</h3>
-            <p>Personally executed slicing and 3D printing of functional models to test parametric complex geometries.</p>
-            <a href="Additive_Manufacturing_Report.pdf" class="report-btn">View Report</a>
         </div>
     </section>
 
@@ -175,6 +150,36 @@
             <div class="skill-badge" data-aos="zoom-in">GD&T</div>
             <div class="skill-badge" data-aos="zoom-in">Graphic Design</div>
             <div class="skill-badge" data-aos="zoom-in">Tech Writing</div>
+            <div class="skill-badge" data-aos="zoom-in">Public Speaking</div>
+            <div class="skill-badge" data-aos="zoom-in">Social Media</div>
+        </div>
+    </section>
+
+    <section>
+        <h2>Engineering Projects</h2>
+        
+        <div class="card project-card" data-aos="fade-up">
+            <h3>⚙️ 3-Speed Gearbox</h3>
+            <p>Designed the shifting mechanism and gears for smooth transitions using <strong>SolidWorks</strong> and <strong>ANSYS</strong> analysis.</p>
+            <a href="Gearbox_Report.docx" class="report-btn">View Report</a>
+        </div>
+
+        <div class="card project-card" data-aos="fade-up">
+            <h3>🔩 Scissor Screw Jack Fabrication</h3>
+            <p>Managed fabrication including square thread geometry and welding. Led the project as <strong>Project Coordinator</strong>.</p>
+            <a href="Screw_Jack_PPT.pdf" class="report-btn">View Presentation</a>
+        </div>
+
+        <div class="card project-card" data-aos="fade-up">
+            <h3>🌀 Mini Drilling and Cutting Machine</h3>
+            <p>Developed a dual-purpose tool for small-scale fabrication using integrated mechanical components.</p>
+            <a href="Drilling_Machine_Report.pdf" class="report-btn">View Report</a>
+        </div>
+
+        <div class="card project-card" data-aos="fade-up">
+            <h3>🖨️ Additive Manufacturing & 3D Printing</h3>
+            <p>Personally executed slicing and 3D printing of functional models to test parametric complex geometries.</p>
+            <a href="Additive_Manufacturing_Report.pdf" class="report-btn">View Report</a>
         </div>
     </section>
 </div>
