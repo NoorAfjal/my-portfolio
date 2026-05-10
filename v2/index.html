@@ -1,658 +1,267 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-    <title>Syed Md Noor Afjal | Executive Portfolio</title>
-
-    <!-- SEO -->
-    <meta name="description" content="Portfolio of Syed Md Noor Afjal - Mechanical Engineering student at KIIT, Amazon Program Manager Intern, CAD Designer, Researcher and Engineering Enthusiast." />
-
-    <!-- Favicon -->
-    <link rel="icon" type="image/png" href="favicon.png" />
-
-    <!-- AOS -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" />
-
-    <!-- Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@400;600;700&family=Space+Mono&display=swap" rel="stylesheet" />
-
-    <style>
-        :root {
-            --primary: #2563eb;
-            --success: #10b981;
-            --dark: #0f172a;
-            --glass: rgba(255, 255, 255, 0.35);
-            --glass-border: rgba(255, 255, 255, 0.7);
-        }
-
-        * {
-            box-sizing: border-box;
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
-        body {
-            font-family: 'Lexend', sans-serif;
-            margin: 0;
-            background: #f8fafc;
-            overflow-x: hidden;
-            color: #1e293b;
-        }
-
-        section {
-            scroll-margin-top: 80px;
-        }
-
-        /* LOADER */
-        #loader {
-            position: fixed;
-            inset: 0;
-            background: #0f172a;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            z-index: 99999;
-            transition: opacity 0.6s ease, visibility 0.6s ease;
-        }
-
-        #loader.hidden {
-            opacity: 0;
-            visibility: hidden;
-        }
-
-        .loader-ring {
-            width: 70px;
-            height: 70px;
-            border: 5px solid rgba(255,255,255,0.15);
-            border-top: 5px solid #2563eb;
-            border-radius: 50%;
-            animation: spin 1s linear infinite;
-        }
-
-        @keyframes spin {
-            to {
-                transform: rotate(360deg);
-            }
-        }
-
-        /* CUSTOM CURSOR */
-        #cursor {
-            width: 25px;
-            height: 25px;
-            border: 2px solid var(--primary);
-            border-radius: 50%;
-            position: fixed;
-            pointer-events: none;
-            transition: transform 0.1s ease-out, background 0.3s ease;
-            z-index: 10000;
-            transform: translate(-50%, -50%);
-            display: none;
-        }
-
-        @media (min-width: 1024px) {
-            #cursor {
-                display: block;
-            }
-
-            body {
-                cursor: none;
-            }
-        }
-
-        /* BACKGROUND */
-        .mesh-bg {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background:
-                radial-gradient(circle at 15% 15%, #dbeafe 0%, transparent 45%),
-                radial-gradient(circle at 85% 85%, #f0fdf4 0%, transparent 45%),
-                url('https://www.transparenttextures.com/patterns/white-diamond.png'),
-                #f8fafc;
-            opacity: 0.8;
-            z-index: -1;
-        }
-
-        /* HEADER */
-        header {
-            background: var(--dark);
-            color: white;
-            padding: 7rem 2rem;
-            text-align: center;
-            clip-path: polygon(0 0, 100% 0, 100% 88%, 0 100%);
-            position: relative;
-            z-index: 10;
-        }
-
-        .profile-img {
-            width: 160px;
-            height: 160px;
-            border-radius: 50%;
-            border: 3px solid var(--primary);
-            margin-bottom: 1rem;
-            object-fit: cover;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-        }
-
-        .container {
-            max-width: 950px;
-            margin: auto;
-            padding: 2rem;
-        }
-
-        h2 {
-            font-weight: 700;
-            color: var(--dark);
-            border-left: 6px solid var(--primary);
-            padding-left: 18px;
-            margin: 4.5rem 0 2.5rem 0;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        /* GLASS CARDS */
-        .card {
-            background: var(--glass);
-            backdrop-filter: blur(25px) saturate(200%);
-            -webkit-backdrop-filter: blur(25px) saturate(200%);
-            border-radius: 24px;
-            padding: 2.5rem;
-            margin-bottom: 2.5rem;
-            border: 1px solid var(--glass-border);
-            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            position: relative;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.06);
-        }
-
-        .card:hover {
-            transform: translateY(-12px);
-            box-shadow: 0 0 45px 12px rgba(16, 185, 129, 0.35);
-            border-color: var(--success);
-            background: rgba(255,255,255,0.55);
-        }
-
-        /* BUTTONS */
-        .btn {
-            padding: 0.9rem 2rem;
-            border-radius: 14px;
-            font-weight: 600;
-            text-decoration: none;
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            transition: 0.3s;
-            border: none;
-            cursor: pointer;
-        }
-
-        .btn-primary {
-            background: var(--primary);
-            color: white;
-        }
-
-        .btn-success {
-            background: var(--success);
-            color: white;
-        }
-
-        .btn-outline {
-            border: 2px solid rgba(255,255,255,0.4);
-            color: white;
-            background: transparent;
-        }
-
-        .btn:hover {
-            opacity: 0.92;
-        }
-
-        /* PROJECTS */
-        .project-content {
-            transition: transform 0.4s ease;
-        }
-
-        .project-card:hover .project-content {
-            transform: translateY(-45px);
-        }
-
-        .report-btn {
-            position: absolute;
-            bottom: 2rem;
-            left: 50%;
-            transform: translate(-50%, 25px);
-            opacity: 0;
-            transition: all 0.4s ease;
-        }
-
-        .project-card:hover .report-btn {
-            opacity: 1;
-            transform: translate(-50%, 0);
-        }
-
-        /* BADGES */
-        .badge {
-            font-family: 'Space Mono', monospace;
-            font-size: 0.75rem;
-            background: #dbeafe;
-            color: #1e40af;
-            padding: 5px 12px;
-            border-radius: 8px;
-            font-weight: bold;
-        }
-
-        /* SKILLS */
-        .skills-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-            gap: 1.2rem;
-        }
-
-        .skill-item {
-            text-align: center;
-            padding: 1.8rem !important;
-            margin: 0;
-            font-weight: 600;
-        }
-
-        footer {
-            text-align: center;
-            padding: 40px;
-            color: #64748b;
-            font-size: 0.95rem;
-        }
-
-        /* MOBILE RESPONSIVENESS */
-        @media (max-width: 768px) {
-
-            header {
-                padding: 5rem 1.2rem;
-            }
-
-            h1 {
-                font-size: 2rem !important;
-            }
-
-            .container {
-                padding: 1.2rem;
-            }
-
-            .card {
-                padding: 1.8rem;
-            }
-
-            .card:hover {
-                transform: none;
-                box-shadow: 0 10px 40px rgba(0,0,0,0.08);
-            }
-
-            .project-card:hover .project-content {
-                transform: none;
-            }
-
-            .report-btn {
-                opacity: 1;
-                transform: translate(-50%, 0);
-                position: relative;
-                left: auto;
-                bottom: auto;
-                margin-top: 20px;
-            }
-        }
-    </style>
-</head>
-
-<body>
-
-    <!-- LOADER -->
-    <div id="loader">
-        <div class="loader-ring"></div>
-    </div>
-
-    <!-- CURSOR -->
-    <div id="cursor"></div>
-
-    <!-- BACKGROUND -->
-    <div class="mesh-bg"></div>
-
-    <!-- HEADER -->
-    <header>
-        <img src="profile.jpg" alt="Syed Md Noor Afjal" class="profile-img" data-aos="zoom-in">
-
-        <h1 data-aos="fade-down" style="font-size: 2.8rem; letter-spacing: 2px;">
-            SYED MD NOOR AFJAL
-        </h1>
-
-        <p data-aos="fade-up" style="font-size: 1.2rem; line-height: 1.8;">
-            Mechanical Engineering Student |
-            Program Management Intern at Amazon |
-            CAD & Design Enthusiast
-        </p>
-
-        <div style="margin-top:25px; display:flex; justify-content:center; gap:15px; flex-wrap:wrap;">
-
-            <button onclick="smartEmail()" class="btn btn-primary magnetic">
-                ✉️ Email Me
-            </button>
-
-            <a href="tel:+919051602269" class="btn btn-success magnetic">
-                📞 Call Now
-            </a>
-
-            <a href="Noor_Resume.pdf" target="_blank" class="btn btn-outline magnetic">
-                📄 Resume
-            </a>
-
-            <a href="https://www.linkedin.com/in/syednoor786/" target="_blank" class="btn btn-outline magnetic">
-                🔗 LinkedIn
-            </a>
-
-            <a href="#" class="btn btn-outline magnetic">
-                💻 GitHub
-            </a>
-        </div>
-    </header>
-
-    <!-- MAIN -->
-    <div class="container">
-
-        <!-- ABOUT -->
-        <section data-aos="fade-up">
-            <h2>About Me</h2>
-
-            <div class="card">
-                <p>
-                    I am a results-driven Mechanical Engineering student at
-                    <strong>KIIT</strong>, recognized for delivering
-                    high-impact process optimizations at
-                    <strong>Amazon</strong> and technical design expertise in
-                    <strong>SolidWorks</strong> and
-                    <strong>ANSYS</strong>.
-                </p>
-            </div>
-        </section>
-
-        <!-- EXPERIENCE -->
-        <section data-aos="fade-up">
-
-            <h2>Experience</h2>
-
-            <div class="card">
-
-                <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:15px; flex-wrap:wrap; gap:10px;">
-                    <h3 style="margin:0; color:var(--dark);">
-                        Program Manager Intern | Amazon
-                    </h3>
-
-                    <span class="badge">
-                        JUN 2025 - NOV 2025
-                    </span>
-                </div>
-
-                <ul>
-                    <li>
-                        Optimized vendor onboarding by 33% through tax interview automation.
-                    </li>
-
-                    <li>
-                        Achieved 60% resolution improvement in Rescue & RCA processes.
-                    </li>
-
-                    <li>
-                        Trained a pool of 8 associates to support faster resolution and improved tracking in the ECR process.
-                    </li>
-                </ul>
-            </div>
-
-            <div class="card">
-
-                <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:15px; flex-wrap:wrap; gap:10px;">
-                    <h3 style="margin:0; color:var(--dark);">
-                        Engineering Intern | L&T Minerals & Metals
-                    </h3>
-
-                    <span class="badge">
-                        MAY 2024 - JUN 2024
-                    </span>
-                </div>
-
-                <ul>
-                    <li>
-                        Exposure to coke-oven by-product plant operations and industrial fabrication workflows.
-                    </li>
-
-                    <li>
-                        Assisted in technical documentation and production flow monitoring at the plant.
-                    </li>
-                </ul>
-            </div>
-
-        </section>
-
-        <!-- RESEARCH -->
-        <section data-aos="fade-up">
-
-            <h2>Research & Publications</h2>
-
-            <div class="card">
-
-                <h3>🏆 Best Student Paper Award</h3>
-
-                <p>
-                    Awarded at the 40th International Value Engineering Conference organized by the Indian Value Engineering Society (INVEST) in association with KIIT University.
-                </p>
-
-                <p>
-                    Paper Title:
-                    <strong>
-                        Value Engineering Towards Sustainability in the Era of Digitalization
-                    </strong>
-                </p>
-
-            </div>
-
-        </section>
-
-        <!-- LEADERSHIP -->
-        <section>
-
-            <h2>Leadership</h2>
-
-            <div class="card" data-aos="fade-up">
-
-                <p>
-                    <strong>Department Head - NSS SME</strong>
-                    <span class="badge">2025 - 2026</span>
-                </p>
-
-                <p>
-                    <strong>Writing & Documentation Head</strong>
-                    <span class="badge">2024 - 2026</span>
-                </p>
-
-                <p>
-                    <strong>NSS Volunteer</strong>
-                    <span class="badge">2023 - 2026</span>
-                </p>
-
-            </div>
-
-        </section>
-
-        <!-- SKILLS -->
-        <section>
-
-            <h2>Technical & Creative Skills</h2>
-
-            <div class="skills-grid">
-
-                <div class="card skill-item" data-aos="zoom-in">AutoCAD</div>
-                <div class="card skill-item" data-aos="zoom-in">SolidWorks</div>
-                <div class="card skill-item" data-aos="zoom-in">ANSYS</div>
-                <div class="card skill-item" data-aos="zoom-in">Graphic Design</div>
-                <div class="card skill-item" data-aos="zoom-in">Tech Writing</div>
-                <div class="card skill-item" data-aos="zoom-in">Public Speaking</div>
-                <div class="card skill-item" data-aos="zoom-in">Social Media</div>
-                <div class="card skill-item" data-aos="zoom-in">GD&T</div>
-
-            </div>
-
-        </section>
-
-        <!-- PROJECTS -->
-        <section>
-
-            <h2>Engineering Projects</h2>
-
-            <!-- PROJECT -->
-            <div class="card project-card" data-aos="fade-up">
-
-                <div class="project-content">
-                    <h3>⚙️ 3-Speed Gearbox</h3>
-
-                    <p>
-                        Designed for optimized torque transmission using
-                        <strong>SolidWorks</strong> and
-                        <strong>ANSYS</strong>.
-                    </p>
-                </div>
-
-                <a href="3 Speed gear box report.docx" class="btn btn-success report-btn">
-                    View Report
-                </a>
-            </div>
-
-            <!-- PROJECT -->
-            <div class="card project-card" data-aos="fade-up">
-
-                <div class="project-content">
-                    <h3>🔩 Scissor Screw Jack Fabrication</h3>
-
-                    <p>
-                        Managed fabrication of a 200 kg capacity scissor screw jack with emphasis on square thread geometry and welding precision.
-                    </p>
-                </div>
-
-                <a href="METHODS FOR MAKING SCREW JACK.pptx" class="btn btn-success report-btn">
-                    View Presentation
-                </a>
-            </div>
-
-            <!-- PROJECT -->
-            <div class="card project-card" data-aos="fade-up">
-
-                <div class="project-content">
-                    <h3>🌀 Mini Drilling & Cutting Machine</h3>
-
-                    <p>
-                        A compact dual-purpose fabrication tool developed for small-scale industrial applications.
-                    </p>
-                </div>
-
-                <a href="mini project report.pdf" class="btn btn-success report-btn">
-                    View Report
-                </a>
-            </div>
-
-            <!-- PROJECT -->
-            <div class="card project-card" data-aos="fade-up">
-
-                <div class="project-content">
-                    <h3>🖨️ Additive Manufacturing</h3>
-
-                    <p>
-                        Performed slicing and additive manufacturing of functional parametric models for complex geometry testing.
-                    </p>
-                </div>
-
-                <a href="2202046 AM report.pdf" class="btn btn-success report-btn">
-                    View Report
-                </a>
-            </div>
-
-        </section>
-
-    </div>
-
-    <!-- FOOTER -->
-    <footer>
-        © 2026 Syed Md Noor Afjal • Designed & Developed by Noor
-    </footer>
-
-    <!-- AOS -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
-
-    <script>
-
-        // LOADER
-        window.addEventListener('load', () => {
-            const loader = document.getElementById('loader');
-
-            setTimeout(() => {
-                loader.classList.add('hidden');
-            }, 800);
-        });
-
-        // AOS
-        AOS.init({
-            duration: 800,
-            once: true
-        });
-
-        // EMAIL
-        function smartEmail() {
-            window.open(
-                'https://mail.google.com/mail/?view=cm&fs=1&to=nafjal99@gmail.com',
-                '_blank'
-            );
-        }
-
-        // CUSTOM CURSOR
-        const cursor = document.getElementById('cursor');
-
-        document.addEventListener('mousemove', e => {
-            cursor.style.left = e.clientX + 'px';
-            cursor.style.top = e.clientY + 'px';
-        });
-
-        // MAGNETIC BUTTONS
-        const magnetics = document.querySelectorAll('.magnetic');
-
-        magnetics.forEach(btn => {
-
-            btn.addEventListener('mousemove', e => {
-
-                const rect = btn.getBoundingClientRect();
-
-                const x = e.clientX - rect.left - rect.width / 2;
-                const y = e.clientY - rect.top - rect.height / 2;
-
-                btn.style.transform =
-                    `translate(${x * 0.4}px, ${y * 0.4}px)`;
-
-                cursor.style.transform =
-                    'translate(-50%, -50%) scale(2.8)';
-
-                cursor.style.background =
-                    'rgba(37, 99, 235, 0.2)';
-            });
-
-            btn.addEventListener('mouseleave', () => {
-
-                btn.style.transform = '';
-
-                cursor.style.transform =
-                    'translate(-50%, -50%) scale(1)';
-
-                cursor.style.background = 'transparent';
-            });
-        });
-
-    </script>
-
-</body>
-</html>
+<!-- ========================= -->
+<!-- UPDATED CHANGES APPLIED -->
+<!-- ========================= -->
+
+<!-- 1. REMOVE GITHUB BUTTON -->
+<!-- Delete this entire block -->
+
+<!--
+<a href="#" class="btn btn-outline magnetic">
+    💻 GitHub
+</a>
+-->
+
+
+
+<!-- ========================= -->
+<!-- 2. UPDATE HEADER TITLE -->
+<!-- Replace existing subtitle with this -->
+<!-- ========================= -->
+
+<p data-aos="fade-up" style="font-size: 1.2rem; line-height: 1.8;">
+    Mechanical Engineer |
+    Ex-Program Manager Intern at Amazon |
+    CAD & Design Enthusiast
+</p>
+
+
+
+<!-- ========================= -->
+<!-- 3. UPDATE EXPERIENCE TITLE -->
+<!-- Replace existing Amazon heading -->
+<!-- ========================= -->
+
+<h3 style="margin:0; color:var(--dark);">
+    Program Manager Intern | Amazon
+</h3>
+
+<!-- OR if you prefer explicitly -->
+
+<!--
+<h3 style="margin:0; color:var(--dark);">
+    Ex-Program Manager Intern | Amazon
+</h3>
+-->
+
+
+
+<!-- ========================= -->
+<!-- 4. TRUE iPHONE-STYLE FROSTED GLASS -->
+<!-- REPLACE YOUR .mesh-bg CSS -->
+<!-- ========================= -->
+
+.mesh-bg {
+    position: fixed;
+    inset: 0;
+    background:
+        radial-gradient(circle at top left,
+        rgba(96,165,250,0.22),
+        transparent 30%),
+
+        radial-gradient(circle at bottom right,
+        rgba(16,185,129,0.18),
+        transparent 35%),
+
+        radial-gradient(circle at center,
+        rgba(255,255,255,0.45),
+        transparent 60%),
+
+        linear-gradient(
+            135deg,
+            #f8fafc 0%,
+            #eef4ff 40%,
+            #f6fdf9 100%
+        );
+
+    overflow: hidden;
+    z-index: -2;
+}
+
+/* EXTRA BLURRED LIGHT BLOBS */
+
+.mesh-bg::before,
+.mesh-bg::after {
+    content: "";
+    position: absolute;
+    width: 500px;
+    height: 500px;
+    border-radius: 50%;
+    filter: blur(90px);
+    opacity: 0.35;
+}
+
+.mesh-bg::before {
+    background: #60a5fa;
+    top: -120px;
+    left: -120px;
+}
+
+.mesh-bg::after {
+    background: #34d399;
+    bottom: -150px;
+    right: -120px;
+}
+
+
+
+/* ========================= */
+/* IMPROVED GLASS CARDS */
+/* Replace existing .card */
+/* ========================= */
+
+.card {
+    background: rgba(255,255,255,0.22);
+
+    backdrop-filter: blur(30px) saturate(180%);
+    -webkit-backdrop-filter: blur(30px) saturate(180%);
+
+    border-radius: 28px;
+
+    padding: 2.5rem;
+    margin-bottom: 2.5rem;
+
+    border: 1px solid rgba(255,255,255,0.35);
+
+    box-shadow:
+        0 8px 32px rgba(15,23,42,0.08),
+        inset 0 1px 0 rgba(255,255,255,0.4);
+
+    transition:
+        transform 0.45s ease,
+        box-shadow 0.45s ease,
+        border 0.45s ease;
+
+    position: relative;
+    overflow: hidden;
+}
+
+/* LIGHT REFLECTION */
+
+.card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background:
+        linear-gradient(
+            120deg,
+            rgba(255,255,255,0.35),
+            rgba(255,255,255,0.05) 40%,
+            transparent 60%
+        );
+
+    pointer-events: none;
+}
+
+/* HOVER */
+
+.card:hover {
+    transform: translateY(-10px);
+
+    box-shadow:
+        0 18px 45px rgba(59,130,246,0.12),
+        0 0 35px rgba(255,255,255,0.2);
+
+    border-color: rgba(255,255,255,0.55);
+}
+
+
+
+/* ========================= */
+/* 5. FIX PROJECT BUTTON BUGS */
+/* Replace ALL project styles */
+/* ========================= */
+
+.project-card {
+    min-height: 250px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    position: relative;
+}
+
+.project-content {
+    transition:
+        transform 0.45s ease,
+        opacity 0.45s ease;
+}
+
+/* BUTTON */
+
+.report-btn {
+    position: absolute;
+
+    left: 50%;
+    bottom: 28px;
+
+    transform: translateX(-50%) translateY(20px);
+
+    opacity: 0;
+
+    transition:
+        opacity 0.35s ease,
+        transform 0.35s ease;
+
+    white-space: nowrap;
+}
+
+/* HOVER FIX */
+
+.project-card:hover .project-content {
+    transform: translateY(-15px);
+}
+
+.project-card:hover .report-btn {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+}
+
+/* MULTI-TAB / SMALL HEIGHT FIX */
+
+@media (max-height: 800px) {
+
+    .project-card {
+        min-height: auto;
+        padding-bottom: 90px;
+    }
+
+    .report-btn {
+        bottom: 25px;
+    }
+
+    .project-card:hover .project-content {
+        transform: translateY(-8px);
+    }
+}
+
+
+
+/* ========================= */
+/* MOBILE FIX */
+/* ========================= */
+
+@media (max-width: 768px) {
+
+    .report-btn {
+        opacity: 1 !important;
+
+        position: relative;
+        left: auto;
+        bottom: auto;
+
+        transform: none !important;
+
+        margin-top: 20px;
+
+        display: inline-flex;
+    }
+
+    .project-card {
+        min-height: auto;
+    }
+
+    .project-card:hover .project-content {
+        transform: none;
+    }
+}
