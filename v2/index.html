@@ -16,7 +16,6 @@
             --glass-border: rgba(255, 255, 255, 0.7);
         }
 
-        /* CUSTOM CURSOR */
         #cursor {
             width: 25px; height: 25px; border: 2px solid var(--primary);
             border-radius: 50%; position: fixed; pointer-events: none;
@@ -31,7 +30,6 @@
             scroll-behavior: smooth; overflow-x: hidden;
         }
 
-        /* HYPER-FROSTED BACKGROUND */
         .mesh-bg {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%;
             background: 
@@ -42,28 +40,16 @@
             opacity: 0.8; z-index: -1;
         }
 
-        /* PROFILE HEADER SECTION */
         header { 
             background: var(--dark); color: white; padding: 7rem 2rem; 
             text-align: center; clip-path: polygon(0 0, 100% 0, 100% 88%, 0 100%);
             position: relative; z-index: 10;
         }
 
-        .profile-img { 
-            width: 150px; height: 150px; border-radius: 50%; 
-            border: 3px solid var(--primary); margin-bottom: 1rem; 
-            object-fit: cover; box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-        }
-
+        .profile-img { width: 150px; height: 150px; border-radius: 50%; border: 3px solid var(--primary); margin-bottom: 1rem; object-fit: cover; }
         .container { max-width: 900px; margin: auto; padding: 2rem; }
-        
-        h2 { 
-            font-weight: 700; color: var(--dark); border-left: 6px solid var(--primary); 
-            padding-left: 18px; margin: 4.5rem 0 2.5rem 0; 
-            text-transform: uppercase; letter-spacing: 1px; 
-        }
+        h2 { font-weight: 700; color: var(--dark); border-left: 6px solid var(--primary); padding-left: 18px; margin: 4.5rem 0 2.5rem 0; text-transform: uppercase; letter-spacing: 1px; }
 
-        /* FROSTED GLASS CARDS */
         .card { 
             background: var(--glass); 
             backdrop-filter: blur(25px) saturate(200%);
@@ -72,7 +58,6 @@
             border: 1px solid var(--glass-border);
             transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             position: relative;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.06);
         }
 
         .card:hover { 
@@ -82,32 +67,17 @@
             background: rgba(255, 255, 255, 0.55);
         }
 
-        /* BUTTONS */
-        .btn { 
-            padding: 0.9rem 2rem; border-radius: 14px; font-weight: 600; 
-            text-decoration: none; display: inline-flex; align-items: center; 
-            gap: 10px; transition: 0.3s; border: none; cursor: pointer; 
-        }
+        .btn { padding: 0.9rem 2rem; border-radius: 14px; font-weight: 600; text-decoration: none; display: inline-flex; align-items: center; gap: 10px; transition: 0.3s; border: none; cursor: pointer; }
         .btn-primary { background: var(--primary); color: white; }
         .btn-success { background: var(--success); color: white; }
         .btn-outline { border: 2px solid rgba(255,255,255,0.4); color: white; background: transparent; }
 
-        /* PROJECT LOGIC */
         .project-content { transition: transform 0.4s ease; }
         .project-card:hover .project-content { transform: translateY(-45px); }
-        .report-btn { 
-            position: absolute; bottom: 2rem; left: 50%; 
-            transform: translate(-50%, 25px); opacity: 0; 
-            transition: all 0.4s ease; 
-        }
+        .report-btn { position: absolute; bottom: 2rem; left: 50%; transform: translate(-50%, 25px); opacity: 0; transition: all 0.4s ease; }
         .project-card:hover .report-btn { opacity: 1; transform: translate(-50%, 0); }
 
-        .badge { 
-            font-family: 'Space Mono', monospace; font-size: 0.75rem; 
-            background: #dbeafe; color: #1e40af; padding: 5px 12px; 
-            border-radius: 8px; font-weight: bold; 
-        }
-
+        .badge { font-family: 'Space Mono', monospace; font-size: 0.75rem; background: #dbeafe; color: #1e40af; padding: 5px 12px; border-radius: 8px; font-weight: bold; }
         .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 1.2rem; }
         .skill-item { text-align: center; padding: 1.8rem !important; margin: 0; }
     </style>
@@ -133,7 +103,7 @@
     <section data-aos="fade-up">
         <h2>About Me</h2>
         <div class="card">
-            <p>I am a results-driven Mechanical Engineering student at KIIT, recognized for delivering high-impact process optimizations at <strong>Amazon</strong> and technical design expertise in <strong>SolidWorks</strong> and <strong>ANSYS</strong>.</p>
+            <p>I am a results-driven Mechanical Engineering student at KIIT, recognized for delivering high-impact process optimizations during my <strong>Amazon</strong> internship and demonstrating technical design expertise in <strong>SolidWorks</strong> and <strong>ANSYS</strong>. I combine rigorous analytical skills with a creative approach to engineering fabrication.</p>
         </div>
     </section>
 
@@ -155,8 +125,8 @@
                 <span class="badge">MAY 2024 - JUN 2024</span>
             </div>
             <ul>
-                <li>Exposure to the coco-win byproduct plant and industrial fabrication operations.</li>
-                <li>Assisted in technical documentation and production flow monitoring at the plant.</li>
+                <li>Gained hands-on exposure to industrial fabrication at the coco-win byproduct plant.</li>
+                <li>Developed technical activity records and monitored production flow cycles.</li>
             </ul>
         </div>
     </section>
@@ -164,7 +134,7 @@
     <section>
         <h2>Leadership</h2>
         <div class="card" data-aos="fade-up">
-            <p><strong>Department Head - NSS SME</strong> <span class="badge">2025 - 2026</span></p>
+            <p><strong>Department Head - NSS SME (Kruti)</strong> <span class="badge">2025 - 2026</span></p>
             <p><strong>Writing & Documentation Head</strong> <span class="badge">2024 - 2026</span></p>
             <p><strong>NSS Volunteer</strong> <span class="badge">2023 - 2026</span></p>
         </div>
@@ -190,7 +160,7 @@
         <div class="card project-card" data-aos="fade-up">
             <div class="project-content">
                 <h3>⚙️ 3-Speed Gearbox</h3>
-                <p>Designed for optimized torque transmission using <strong>SolidWorks</strong> and <strong>ANSYS</strong>.</p>
+                <p>Designed shifting mechanisms and gears for torque transmission using <strong>SolidWorks</strong> and <strong>ANSYS</strong>.</p>
             </div>
             <a href="3 Speed gear box report.docx" class="btn btn-success report-btn">View Report</a>
         </div>
@@ -198,7 +168,7 @@
         <div class="card project-card" data-aos="fade-up">
             <div class="project-content">
                 <h3>🔩 Scissor Screw Jack Fabrication</h3>
-                <p>Managed fabrication of a 200kg capacity jack. Focused on square thread geometry and welding.</p>
+                <p>Managed fabrication of a 200kg capacity jack. Focused on square thread geometry and material selection.</p>
             </div>
             <a href="METHODS FOR MAKING SCREW JACK.pptx" class="btn btn-success report-btn">View Presentation</a>
         </div>
@@ -206,7 +176,7 @@
         <div class="card project-card" data-aos="fade-up">
             <div class="project-content">
                 <h3>🌀 Mini Drilling & Cutting Machine</h3>
-                <p>A compact, dual-purpose fabrication tool developed for small-scale industrial applications.</p>
+                <p>Developed a dual-purpose tool for small-scale industrial fabrication and efficient component integration.</p>
             </div>
             <a href="mini project report.pdf" class="btn btn-success report-btn">View Report</a>
         </div>
@@ -214,7 +184,7 @@
         <div class="card project-card" data-aos="fade-up">
             <div class="project-content">
                 <h3>🖨️ Additive Manufacturing</h3>
-                <p>Executed slicing and 3D printing of functional parametric models for complex geometry testing.</p>
+                <p>Executed slicing and 3D printing of functional models to test parametric complex geometries.</p>
             </div>
             <a href="2202046 AM report.pdf" class="btn btn-success report-btn">View Report</a>
         </div>
